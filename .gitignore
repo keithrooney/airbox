@@ -1,0 +1,40 @@
+# Python bytecode files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Django files
+*.log
+*.pot
+*.db
+*.sqlite3
+
+# Virtualenv
+venv/
+env/
+.venv/
+.env/
+
+# IDEs and text editors
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Static and media files (you should collect these with `collectstatic`)
+static/
+media/
+
+# Local settings
+local_settings.py
+settings_local.py
+
+# Django's secret key file (if you're using an external one)
+secret_key.txt
+
+# Miscellaneous
+logs/
+build/
