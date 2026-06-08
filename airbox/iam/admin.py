@@ -1,3 +1,9 @@
-from django.contrib import admin
+from django.contrib.admin import register, ModelAdmin
 
-# Register your models here.
+from airbox.iam.models import User
+
+
+@register(User)
+class UserAdmin(ModelAdmin):
+    list_display = ('email',)
+    search_fields = ('email',)
