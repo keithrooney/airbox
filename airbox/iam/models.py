@@ -1,6 +1,8 @@
+from enum import Enum
+
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import BaseUserManager, PermissionsMixin
-from django.db.models import EmailField, CharField, BooleanField
+from django.db.models import EmailField, CharField, BooleanField, Model, DateTimeField, ForeignKey, CASCADE
 from django.utils.translation import gettext_lazy as _
 
 
@@ -37,3 +39,22 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
     objects = UserManager()
+
+
+class Organisation(Model):
+    name = CharField(_('name'), max_length=150)
+    created_at = DateTimeField(auto_now_add=True)
+
+
+class Role(str, Enum):
+    OWNER = 'owner'
+    ADMIN = 'admin'
+    EDITOR = 'editor'
+    VIEWER = 'viewer'
+
+
+class Member(Model):
+    organisation = ForeignKey(Organisation, on_delete=CASCADE)
+    user = ForeignKey(User, on_delete=CASCADE)
+    role = CharField(max_length=10, choices=[(role.value, role.name.title()) for role in Role], default=Role.VIEWER.value)
+    joined_at = DateTimeField(auto_now_add=True)
