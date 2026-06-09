@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'airbox.iam'
+    'airbox.iam',
+    'airbox.filesystem'
 ]
 
 MIDDLEWARE = [
@@ -156,3 +157,10 @@ LOGGING = {
 # https://docs.djangoproject.com/en/6.0/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project
 
 AUTH_USER_MODEL = 'iam.User'
+
+# The documentation for managing files.
+# https://docs.djangoproject.com/en/6.0/topics/files/
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'data')
+# TODO: the below needs to be configured at later stage
+# MEDIA_URL = '/f/'

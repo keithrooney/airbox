@@ -38,3 +38,4 @@ secret_key.txt
 # Miscellaneous
 logs/
 build/
+data/
